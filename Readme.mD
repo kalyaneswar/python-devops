@@ -321,6 +321,253 @@ p1 = Person("Alice", 25)
 print(p1.greet())
 ```
 
+## String Operations
+ ### Example:
+
+```
+sample_str = "This-is-a-sample-string"
+print(sample_str)
+
+# How to access individual characters from a string
+print(sample_str[8])
+
+# Slicing
+sub_str = sample_str[2:7]
+print(sub_str)
+
+sub_str = sample_str[:]
+print(sub_str)
+
+sub_str = sample_str[1:]
+print(sub_str)
+
+sub_str = sample_str[:5]
+print(sub_str)
+
+sub_str = sample_str[::2]
+print(sub_str)
+
+# Reverse a string
+sub_str = sample_str[::-1]
+print("Reversed string:", sub_str)
+
+# Length of a string
+len_str = len(sample_str)
+print("Length of a string:", len_str)
+
+# String Methods
+sample_str = "hello"
+print(sample_str.capitalize()) # "Hello"
+
+# split(), join(), format(), count(), strip(), lstrip(), rstrip()
+sample_str = "This is a sample string"
+str_split = sample_str.split() # output: list
+print(str_split, type(str_split))
+
+join_split_str = " ".join(str_split)
+print(join_split_str, type(join_split_str))
+
+count_a = sample_str.count('a')
+print(count_a)
+
+sample_str = "    devops is a very good career choice   "
+strip_str = sample_str.strip()
+print(strip_str)
+
+# Strings are immutable
+sample_str = "This is a sample string"
+sample_str[-1] = 'G'  # This will raise an error
+print(sample_str)
+```
+
+# Python Tuples
+
+### Introduction
+
+A tuple is an immutable, ordered collection of elements in Python. Once created, its elements cannot be changed. Tuples are commonly used when we need to store related items together and ensure their integrity.
+
+### Creating a Tuple
+
+There are two ways to create a tuple:
+
+Using parentheses ()
+```sh
+sample_tuple = ("Ansible", "Terraform", "Jenkins", "Docker", "K8s")
+```
+Using the tuple() constructor
+```sh
+sample_tuple = tuple(["Ansible", "Terraform", "Jenkins", "Docker", "K8s"])
+```
+
+### Accessing Elements
+
+Tuples support indexing just like lists.
+```
+sample_ele = sample_tuple[1]  # Accessing by index
+print(sample_ele)  # Output: Terraform
+
+sample_ele = sample_tuple[-1]  # Accessing last element
+print(sample_ele)  # Output: K8s
+```
+
+## Slicing Tuples
+
+Tuples can be sliced to create sub-tuples.
+```sh
+sliced_tuple = sample_tuple[1:3]  # Extract elements from index 1 to 2
+print(sliced_tuple)  # Output: ('Terraform', 'Jenkins')
+
+sliced_tuple_len = len(sliced_tuple)  # Getting the length of a sliced tuple
+print(sliced_tuple_len)  # Output: 2
+```
+
+## Tuple Immutability
+
+Tuples do not support item assignment.
+```
+# sample_tuple[1] = "Shell"  # Uncommenting this line will cause an error
+```
+Error:
+```
+TypeError: 'tuple' object does not support item assignment
+```
+
+## Tuple Operations
+
+### Concatenation
+
+Tuples can be concatenated using +:
+
+```sh
+res_tuple = sample_tuple + sliced_tuple
+print(res_tuple)  # ('Ansible', 'Terraform', 'Jenkins', 'Docker', 'K8s', 'Terraform', 'Jenkins')
+```
+
+### Repetition
+
+Tuples can be repeated using *:
+```
+res_tuple_1 = sliced_tuple * 2
+print(res_tuple_1)  # ('Terraform', 'Jenkins', 'Terraform', 'Jenkins')
+```
+## Tuple Methods
+
+### Finding an Index
+
+To find the index of an element in a tuple:
+```
+k8s_idx = res_tuple.index("K8s")
+print(k8s_idx)  # Output: 4
+```
+If the element does not exist, an error is raised:
+```
+# k8s_idx = res_tuple.index("k8s")  # Uncommenting this will cause an error
+```
+Error:
+```
+ValueError: tuple.index(x): x not in tuple
+```
+### Tuple Unpacking
+
+Tuples allow unpacking of elements into individual variables.
+```sh
+ansible, terraform, jenkins, docker, k8s = ("Ansible", "Terraform", "Jenkins", "Docker", "K8s")
+print(ansible, terraform, jenkins, docker, k8s)
+```
+Using * for flexible unpacking:
+```sh
+ansible, *tools, orchestrator = ("Ansible", "Terraform", "Jenkins", "Docker", "K8s", "DevOps")
+print(ansible, tools, orchestrator)
+print(*tools)  # Output: Terraform Jenkins Docker K8s
+```
+#### Summary
+
+* Tuples are immutable and ordered.
+
+* Created using () or tuple().
+
+* Elements are accessed via indexing and slicing.
+
+* They support concatenation, repetition, and some useful methods.
+
+* Tuple unpacking allows easy assignment of values.
+
+* Tuples are an efficient data structure when immutability is required!
+
+
+# Python Lists
+
+## Overview
+
+A list in Python is a mutable, ordered collection of elements. It allows duplicate values and supports various operations such as indexing, slicing, appending, and extending.
+
+### Creating a List
+```
+sample_list = ["Ansible", "Terraform", "Jenkins", "Docker", "K8s"]
+```
+### Indexing and Slicing
+
+#### Accessing Elements
+```
+sample_ele = sample_list[1]
+print(sample_ele)  # Output: Terraform
+```
+#### Handling Index Errors
+```
+# sample_ele = sample_list[5]  # IndexError: list index out of range
+```
+#### Accessing the Last Element
+```
+sample_ele = sample_list[-1]  # Equivalent to sample_list[len(sample_list) - 1]
+print(sample_ele)  # Output: K8s
+```
+#### Slicing a List
+```
+sliced_list = sample_list[1:3]  # Extracts elements from index 1 to 2
+print(sliced_list)  # Output: ['Terraform', 'Jenkins']
+```
+#### Length of Sliced List
+```
+sliced_list_len = len(sliced_list)
+print(sliced_list_len)  # Output: 2
+```
+### Mutability of Lists
+
+Lists are mutable, meaning elements can be modified after creation.
+```
+sample_list[1] = "Shell"
+print(sample_list)  # Output: ['Ansible', 'Shell', 'Jenkins', 'Docker', 'K8s']
+```
+## List Operations
+
+#### Append an Element
+```
+sample_list.append("Shell")  # Adds 'Shell' to the end of the list
+print(sample_list)
+```
+#### Append a List to Itself
+```
+sample_list.append(sample_list)
+print(len(sample_list))  # Output increases due to nesting
+```
+#### Extend a List
+```
+sample_list = [1, 2, 'sample', True]
+sample_list.extend(sample_list)
+print(len(sample_list), sample_list)
+```
+### Membership Operators
+
+Checking if an element exists in a list:
+```
+is_elem = 2 in sample_list
+print(is_elem)  # Output: True
+```
+### Summary
+
+Python lists provide dynamic storage with various functionalities such as indexing, slicing, mutability, and built-in operations like append and extend. Understanding these operations is essential for efficient list manipulation in Python.
+
+
 
 ## Additional Notes
 
